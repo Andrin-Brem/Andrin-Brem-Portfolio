@@ -1,0 +1,419 @@
+
+#andrin {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    align-self: center;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #081f30;
+}
+
+nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    z-index: 1000;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 5px;
+    transition: border-color 0.3s ease;
+}
+
+nav a:hover {
+    border-bottom-color: white;
+}
+
+.link-styles a {
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    color: rgb(182, 51, 51);
+}
+
+.home-icon {
+    position: fixed;
+    top: 20px;
+    left: 5px;
+    border-bottom: none;
+    padding: 0;
+}
+
+.home-icon:hover {
+    border-bottom: none;
+}
+
+.home-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 62px;
+    height: 62px;
+    border: 2px solid white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.home-icon:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.home-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: block;
+}
+.steckbrief strong {
+    display: inline-block;
+    width: 180px;
+}
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero-content h1 {
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 125px;
+    margin: 0;
+    animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.titel {
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 300px;
+}
+
+.logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.logo img {
+    width: 27px;
+    height: auto;
+}
+
+#homeButton {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#homeButton.hide-home {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome {
+    font-size: 2.5rem;
+}
+
+.section {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    padding: 5% 4%;
+    background-color: #2a2c2e;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.section-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.section-text {
+    width: 57%;
+    flex: 0 0 57%;
+    padding: 40px 20px 40px 45px;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.section-text h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    margin: 0 0 30px;
+    color: #c7c8c9;
+}
+
+.section-text h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin: 0 0 20px;
+    color: #b1b1b1;
+}
+
+.section-text p {
+    width: 100%;
+    color: #c8d4da;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.section-image {
+    width: 40%;
+    flex: 0 0 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-image img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+#ueber-mich {
+    background-image: url("bilder/ueber-mich-bg.jpg");
+}
+
+#projekte {
+    background-image: url("bilder/projekte-bg.jpg");
+}
+
+#kontakt {
+    background-image: url("bilder/kontakt-bg.jpg");
+}
+
+.impressum {
+    width: 100%;
+    min-height: 45vh;
+    background: #1b1c1d;
+    padding: 70px 6% 35px;
+    border-top: 1px solid #525252;
+    box-sizing: border-box;
+}
+
+.impressum-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.impressum h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 5px;
+    text-align: center;
+    margin: 0 0 50px;
+    color: #5b6469;
+}
+
+.impressum-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.impressum-grid h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin: 0 0 20px;
+    color: #565c5f;
+}
+
+.impressum-grid p {
+    color: #c2cdd3;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.impressum-bottom {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid #bdc1c4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.impressum-bottom p {
+    color: #e3e7e9;
+    font-size: 0.75rem;
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.impressum-bottom a {
+    color: #d1dce2;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.impressum-bottom a:hover {
+    color: white;
+}
+
+@media (max-width: 900px) {
+    .impressum-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
+    .hero-content h1 {
+        font-size: 70px;
+    }
+
+    .section {
+        aspect-ratio: auto;
+        min-height: 800px;
+        padding: 60px 25px;
+    }
+
+    .section-content {
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .section-text {
+        width: 100%;
+        flex: none;
+        padding: 0;
+    }
+
+    .section-text p {
+        font-size: 1.3rem;
+    }
+
+    .section-image {
+        width: 100%;
+        flex: none;
+        height: auto;
+    }
+
+    .section-image img {
+        width: 100%;
+        height: 350px;
+    }
+}
+
+@media (max-width: 600px) {
+    nav {
+        font-size: 1rem;
+        top: 15px;
+        right: 15px;
+    }
+
+    nav a {
+        margin-left: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 50px;
+    }
+
+    .impressum {
+        padding: 50px 25px 30px;
+    }
+
+    .impressum-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .impressum h2 {
+        font-size: 30px;
+    }
+
+    .impressum-grid p {
+        font-size: 16px;
+    }
+
+    .impressum-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
