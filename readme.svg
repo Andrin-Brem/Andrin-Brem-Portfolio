@@ -5,9 +5,14 @@
       <stop offset=".5" stop-color="#3b82f6"/>
       <stop offset="1" stop-color="#bfdbfe"/>
     </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b82f6" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#3b82f6" stop-opacity="0"/>
+    </linearGradient>
     <pattern id="net" width="10" height="10" patternUnits="userSpaceOnUse">
       <path d="M10 0H0V10" fill="none" stroke="#3b82f6" stroke-opacity=".45"/>
     </pattern>
+    <clipPath id="floor"><rect x="60" y="286" width="740" height="60"/></clipPath>
     <style>
       .mono{font-family:'Cascadia Code','Fira Code',Consolas,'Courier New',monospace}
       .tw{animation:tw 3s ease-in-out infinite}
@@ -19,54 +24,83 @@
   <rect width="860" height="900" rx="18" fill="#0d1117"/>
   <rect x="50" y="24" width="760" height="3" rx="1.5" fill="url(#line)"/>
 
-  <!-- sterne -->
-  <g fill="#cfe3ff">
-    <circle class="tw" cx="300" cy="70" r="1.4"/>
-    <circle class="tw" cx="380" cy="110" r="1" style="animation-delay:.7s"/>
-    <circle class="tw" cx="470" cy="62" r="1.6" style="animation-delay:1.4s"/>
-    <circle class="tw" cx="540" cy="120" r="1.1" style="animation-delay:.3s"/>
-    <circle class="tw" cx="610" cy="80" r="1.4" style="animation-delay:2s"/>
-    <circle class="tw" cx="760" cy="70" r="1.2" style="animation-delay:1s"/>
-    <circle class="tw" cx="110" cy="150" r="1.2" style="animation-delay:2.4s"/>
-    <circle class="tw" cx="250" cy="160" r="1" style="animation-delay:1.7s"/>
+  <!-- hallenlampen -->
+  <g>
+    <polygon points="335,46 385,46 410,286 310,286" fill="url(#glow)"/>
+    <polygon points="485,46 535,46 560,286 460,286" fill="url(#glow)"/>
+    <polygon points="660,46 710,46 735,286 635,286" fill="url(#glow)"/>
+    <rect x="335" y="42" width="50" height="4" rx="2" fill="#bfdbfe" class="tw"/>
+    <rect x="485" y="42" width="50" height="4" rx="2" fill="#bfdbfe" class="tw" style="animation-delay:1s"/>
+    <rect x="660" y="42" width="50" height="4" rx="2" fill="#bfdbfe" class="tw" style="animation-delay:2s"/>
   </g>
 
   <!-- anzeigetafel -->
-  <rect x="80" y="60" width="160" height="42" rx="10" fill="#111a2b" stroke="#1f3b63"/>
-  <text x="160" y="86" text-anchor="middle" class="mono" font-size="14" fill="#93c5fd" xml:space="preserve">andrin  1 : 0</text>
+  <rect x="80" y="56" width="200" height="44" rx="10" fill="#111a2b" stroke="#1f3b63"/>
+  <g class="mono" font-size="14" text-anchor="middle" xml:space="preserve">
+    <text x="180" y="83" fill="#93c5fd">heim  23 : 23  gast
+      <animate attributeName="opacity" values="1;0;1" keyTimes="0;.6;1" calcMode="discrete" dur="3s" repeatCount="indefinite"/></text>
+    <text x="180" y="83" fill="#93c5fd" opacity="0">heim  24 : 23  gast
+      <animate attributeName="opacity" values="0;1;0" keyTimes="0;.6;1" calcMode="discrete" dur="3s" repeatCount="indefinite"/></text>
+  </g>
 
-  <!-- tor -->
+  <!-- hallenboden mit 6m- und 9m-linie -->
+  <line x1="60" y1="286" x2="800" y2="286" stroke="#2f5fa8"/>
+  <g clip-path="url(#floor)" fill="none">
+    <path d="M560 287Q685 328 810 287" stroke="#3b82f6" stroke-width="2"/>
+    <path d="M480 287Q685 356 890 287" stroke="#3b82f6" stroke-opacity=".6" stroke-width="2" stroke-dasharray="8 7"/>
+  </g>
+  <g class="mono" font-size="10" fill="#3b5b8a">
+    <text x="685" y="300" text-anchor="middle">6m</text>
+    <text x="520" y="322">9m</text>
+  </g>
+
+  <!-- tor (3:2, gestreifte pfosten) -->
   <g>
-    <rect x="640" y="165" width="140" height="120" fill="url(#net)"/>
+    <rect x="610" y="186" width="150" height="100" fill="url(#net)"/>
     <animateTransform attributeName="transform" type="translate" values="0 0;0 0;5 0;-3 0;0 0;0 0" keyTimes="0;.6;.64;.68;.72;1" dur="3s" repeatCount="indefinite"/>
   </g>
-  <path d="M640 285V165H780V285" fill="none" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M610 286V186H760V286" fill="none" stroke="#e6edf3" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M610 286V186H760V286" fill="none" stroke="#3b82f6" stroke-width="5" stroke-dasharray="10 10"/>
 
-  <text x="710" y="150" text-anchor="middle" class="mono" font-size="15" fill="#60a5fa" opacity="0">goal!
+  <!-- torhüter -->
+  <g fill="none" stroke="#93c5fd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="685" cy="222" r="8" fill="#93c5fd" stroke="none"/>
+    <path d="M685 230V258"/>
+    <path d="M685 236L668 226L662 210"/>
+    <path d="M685 236L702 226L708 210"/>
+    <path d="M685 258L672 284M685 258L698 284"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;-28 -8;-28 -8;0 0" keyTimes="0;.45;.6;.9;1" dur="3s" repeatCount="indefinite"/>
+  </g>
+
+  <text x="685" y="172" text-anchor="middle" class="mono" font-size="15" fill="#60a5fa" opacity="0">tor!
     <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;.6;.62;.95;1" dur="3s" repeatCount="indefinite"/></text>
 
-  <!-- spieler -->
-  <g class="mono" font-size="18" fill="#e6edf3" xml:space="preserve">
-    <text x="140" y="240">   o</text>
-    <text x="140" y="258">  /|__</text>
-    <text x="140" y="276">  / \</text>
-  </g>
-
-  <!-- ball -->
+  <!-- spieler im sprungwurf -->
   <g>
-    <circle r="9" fill="#e6edf3" stroke="#3b82f6" stroke-width="1.5"/>
-    <path d="M-9 0H9M0-9C-4-4-4 4 0 9" fill="none" stroke="#3b82f6" stroke-width="1.2"/>
-    <animateMotion path="M205 245Q430 70 700 228" keyPoints="0;1;1" keyTimes="0;.6;1" calcMode="linear" dur="3s" repeatCount="indefinite"/>
+    <g fill="none" stroke="#e6edf3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="300" cy="210" r="9" fill="#e6edf3" stroke="none"/>
+      <path d="M300 219L295 252"/>
+      <path d="M299 225L312 212L318 196"/>
+      <path d="M299 226L285 238"/>
+      <path d="M295 252L310 262L300 280"/>
+      <path d="M295 252L285 268L280 284"/>
+    </g>
+    <!-- ball in der hand -->
+    <g transform="translate(320 190)">
+      <circle r="8" fill="#e6edf3" stroke="#3b82f6" stroke-width="1.5"/>
+      <path d="M-8 0Q0-4 8 0M0-8Q-4 0 0 8" fill="none" stroke="#3b82f6" stroke-width="1.2"/>
+      <animate attributeName="opacity" values="1;0" keyTimes="0;.25" calcMode="discrete" dur="3s" repeatCount="indefinite"/>
+    </g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 -40;0 -40;0 0;0 0" keyTimes="0;.25;.35;.55;1" dur="3s" repeatCount="indefinite"/>
   </g>
 
-  <!-- boden -->
-  <line x1="60" y1="286" x2="800" y2="286" stroke="#2f5fa8"/>
-  <line x1="80" y1="302" x2="780" y2="302" stroke="#3b82f6" stroke-opacity=".7" stroke-dasharray="14 10">
-    <animate attributeName="stroke-dashoffset" from="0" to="-48" dur="3s" repeatCount="indefinite"/>
-  </line>
-  <line x1="110" y1="316" x2="750" y2="316" stroke="#3b82f6" stroke-opacity=".35" stroke-dasharray="6 12">
-    <animate attributeName="stroke-dashoffset" from="0" to="36" dur="4s" repeatCount="indefinite"/>
-  </line>
+  <!-- ball im flug -->
+  <g opacity="0">
+    <circle r="8" fill="#e6edf3" stroke="#3b82f6" stroke-width="1.5"/>
+    <path d="M-8 0Q0-4 8 0M0-8Q-4 0 0 8" fill="none" stroke="#3b82f6" stroke-width="1.2"/>
+    <animate attributeName="opacity" values="0;1" keyTimes="0;.25" calcMode="discrete" dur="3s" repeatCount="indefinite"/>
+    <animateMotion path="M320 150Q520 60 745 205" keyPoints="0;0;1;1" keyTimes="0;.25;.6;1" calcMode="linear" dur="3s" repeatCount="indefinite"/>
+  </g>
 
   <!-- intro -->
   <text x="430" y="368" text-anchor="middle" class="mono" font-size="13" fill="#8b949e">hoi, ich bin andrin · das ist meine portfolio-website</text>
@@ -135,4 +169,5 @@
   <text x="430" y="854" text-anchor="middle" class="mono" font-size="13" fill="#3b82f6" xml:space="preserve"><tspan class="tw">o</tspan>  ·  <tspan class="tw" style="animation-delay:.5s">*</tspan>  ·  <tspan class="tw" style="animation-delay:1s">o</tspan>  ·  <tspan class="tw" style="animation-delay:1.5s" opacity=".5">*</tspan>  ·  <tspan class="tw" style="animation-delay:2s" opacity=".4">o</tspan></text>
   <rect x="50" y="876" width="760" height="3" rx="1.5" fill="url(#line)"/>
 </svg>
+
 
